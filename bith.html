@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <!-- Google Fonts for Typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="Rito Riba, Rajat Nagpal - Meri Banogi Kya (Official).mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Particle Container -->
+    <div id="particles-container"></div>
+    <div id="hearts-container"></div>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="fullscreen-section">
+        <div class="content fade-in">
+            <h1 class="hero-title">Happy Birthday My Billo <span class="heart-pulse">❤️</span></h1>
+            <p class="hero-subtitle">Billo jaldi open karna tereliye kuch hai .....</p>
+            <button id="open-surprise-btn" class="romantic-btn">Open My Surprise</button>
+        </div>
+    </section>
+
+    <!-- 2. Love Story Photo Gallery -->
+    <section id="gallery" class="section has-bg">
+        <h2 class="section-title">Our Beautiful Memories Together</h2>
+        <div class="gallery-grid">
+            <!-- Polaroid 1 -->
+            <div class="polaroid"
+                onclick="openLightbox('IMG-20230914-WA0016.jpg', 'One of our beautiful days together.')">
+                <div class="image-wrapper">
+                    <img src="IMG-20230914-WA0016.jpg" alt="Our Memory"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <p class="caption">Our beautiful day...</p>
+            </div>
+            <!-- Polaroid 2 -->
+            <div class="polaroid"
+                onclick="openLightbox('smile.jpeg', 'Your smile that melts my heart.')">
+                <div class="image-wrapper">
+                    <img src="smile.jpeg" alt="Our Memory"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <p class="caption">Your smile ❤️</p>
+            </div>
+            <!-- Polaroid 3 -->
+            <div class="polaroid"
+                onclick="openLightbox('IMG_20230404_201017_919-2.jpg', 'Making memories everywhere we go.')">
+                <div class="image-wrapper">
+                    <img src="IMG_20230404_201017_919-2.jpg" alt="Our Memory"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <p class="caption">With you...</p>
+            </div>
+            <!-- Polaroid 4 -->
+            <div class="polaroid"
+                onclick="openLightbox('IMG_20230404_201013_765.jpg', 'My favorite person in the world.')">
+                <div class="image-wrapper">
+                    <img src="IMG_20230404_201013_765.jpg" alt="Our Memory"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <p class="caption">Forever...</p>
+            </div>
+            <!-- Polaroid 5 -->
+            <div class="polaroid" onclick="openLightbox('IMG_20230423_192605_781.jpg', 'The reason for my happiness.')">
+                <div class="image-wrapper">
+                    <img src="IMG_20230423_192605_781.jpg" alt="Our Memory"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <p class="caption">My happiness!</p>
+            </div>
+            <!-- Polaroid 6 -->
+            <div class="polaroid"
+                onclick="openLightbox('IMG_20230423_192747_850.jpg', 'Cannot wait to make more memories.', 'image')">
+                <div class="image-wrapper">
+                    <img src="IMG_20230423_192747_850.jpg" alt="Our Memory"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <p class="caption">Mote ki pyari Billo </p>
+            </div>
+            <!-- Video 1 -->
+            <div class="polaroid"
+                onclick="openLightbox('VID-20230424-WA0012.mp4', 'Our amazing moments together.', 'video')">
+                <div class="image-wrapper">
+                    <video src="VID-20230424-WA0012.mp4" style="width: 100%; height: 100%; object-fit: cover;" muted
+                        playsinline></video>
+                </div>
+                <p class="caption">Billu ki der sari chumi </p>
+            </div>
+            <!-- Video 2 -->
+            <div class="polaroid" onclick="openLightbox('VID-20230424-WA0015.mp4', 'You are my everything.', 'video')">
+                <div class="image-wrapper">
+                    <video src="VID-20230424-WA0015.mp4" style="width: 100%; height: 100%; object-fit: cover;" muted
+                        playsinline></video>
+                </div>
+                <p class="caption">Meri Billariya</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="hidden">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content fade-in-up">
+            <div class="lightbox-img-placeholder" id="lightbox-img">
+                <i class="fa-solid fa-image fa-4x" style="color:#d4a5bB;"></i>
+            </div>
+            <p id="lightbox-caption">Caption</p>
+        </div>
+    </div>
+
+    <!-- 3. Romantic Message Section -->
+    <section id="message-section" class="section">
+        <div class="love-letter reveal-on-scroll">
+            <p class="typing-effect">
+                "Jab se tum meri life mein aayi ho, sach mein sab kuch<br> thoda zyada beautiful lagne laga hai.
+                Tumhari smile dekh kar mera poora din achha ho jaata hai.<br>
+                Kabhi kabhi sochta hoon ki meri life<br> itni lucky kaise ho gayi ki tum mujhe mil gayi.<br>
+                Aaj tumhare birthday par bas itna kehna<br> chahta hoon ki tum mere liye bahut special ho.<br>
+                Thank you meri life mein aane ke liye, meri khushi,<br> meri peace aur meri sabse favourite person banne
+                ke liye."
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. Cute Love Notes -->
+    <section id="love-notes" class="section has-bg">
+        <h2 class="section-title">Tap The Hearts ❤️</h2>
+        <div class="notes-container">
+            <!-- Love notes will be generated via JS -->
+        </div>
+    </section>
+
+    <!-- Note Popup Modal -->
+    <div id="note-modal" class="hidden">
+        <div class="note-popup fade-in-up">
+            <span class="close-note" onclick="closeNote()">&times;</span>
+            <p id="note-text"></p>
+        </div>
+    </div>
+
+    <!-- 5. Mini Game – Accept My Love -->
+    <section id="mini-game" class="fullscreen-section">
+        <div class="game-content reveal-on-scroll">
+            <h2 class="game-question">Will you always be mine?</h2>
+            <div class="game-buttons">
+                <button id="btn-yes" class="romantic-btn bg-white">YES ❤️</button>
+                <button id="btn-no" class="romantic-btn outline-btn">NO 😜</button>
+            </div>
+            <div id="game-success" class="hidden">
+                <h2>Yay! I knew it! I love you forever ❤️</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Final Surprise Section -->
+    <section id="final-surprise" class="fullscreen-section">
+        <div id="final-hearts-container"></div>
+        <div class="final-content fade-in">
+            <h2 class="glowing-text">Happy Birthday to the most beautiful meri ladao Billo</h2>
+            <p class="final-message">Thank you for being part of my life and making every day brighter.<br>
+                I love you more than words can say.</p>
+            <div class="glowing-heart-large">❤️</div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <!-- Confetti canvas for explosion -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

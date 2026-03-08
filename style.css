@@ -1,0 +1,561 @@
+/* 
+    CSS Variables for Color Themes 
+*/
+:root {
+    --primary-color: #ffb6c1; /* Soft pink */
+    --secondary-color: #e6e6fa; /* Lavender */
+    --accent-color: #ff6b81; /* Darker pink for accents */
+    --bg-light: #fff0f5; /* Lavender blush */
+    --text-dark: #4a4a4a;
+    --text-light: #ffffff;
+    --font-heading: 'Dancing Script', cursive;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* 
+    Base & Reset
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* 
+    Shared Utilities
+*/
+.fullscreen-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.section {
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.has-bg {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: none;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.romantic-btn {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 10;
+}
+
+.romantic-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 129, 0.6);
+}
+
+.romantic-btn.outline-btn {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: none;
+}
+
+.romantic-btn.outline-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+}
+
+.romantic-btn.bg-white {
+    background-color: white;
+    color: var(--accent-color);
+}
+
+.romantic-btn.bg-white:hover {
+    background-color: var(--bg-light);
+}
+
+/* Background Elements */
+#particles-container, #hearts-container, #final-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 
+    1. Hero Section
+*/
+#hero {
+    background: linear-gradient(135deg, rgba(230,230,250,0.8), rgba(255,182,193,0.8));
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    color: #ff4757;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    line-height: 1.2;
+}
+
+.heart-pulse {
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-dark);
+    font-weight: 300;
+}
+
+/* 
+    2. Gallery Section
+*/
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    z-index: 2;
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 30px 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    width: 250px;
+    position: relative;
+    /* initial random tilts will be applied via js, or css:nth-child */
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.polaroid:nth-child(odd) {
+    transform: rotate(-3deg);
+}
+
+.polaroid:hover {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 250px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.photo-placeholder {
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.caption {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* Lightbox */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 240, 245, 0.95);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+#lightbox.hidden {
+    display: none;
+}
+
+.lightbox-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(255, 107, 129, 0.2);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+}
+
+.lightbox-img-placeholder {
+    width: 100%;
+    height: 350px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#lightbox-caption {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 3rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: transform 0.3s;
+}
+
+.close-lightbox:hover {
+    transform: scale(1.1);
+}
+
+/* 
+    3. Message Section
+*/
+#message-section {
+    background: linear-gradient(rgba(255, 240, 245, 0.9), rgba(255, 240, 245, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text y="50" font-size="20">🌸</text></svg>');
+}
+
+.love-letter {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    border: 2px solid white;
+}
+
+.love-letter p {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.6;
+    color: #d14d64;
+    text-shadow: 1px 1px 1px white;
+}
+
+/* 
+    4. Love Notes Section
+*/
+.notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 900px;
+    z-index: 2;
+}
+
+.love-note-btn {
+    background-color: white;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 107, 129, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.love-note-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.1) translateY(-5px);
+}
+
+#note-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#note-modal.hidden {
+    display: none;
+}
+
+.note-popup {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    position: relative;
+    border: 5px solid var(--primary-color);
+    background-image: radial-gradient(var(--bg-light) 10%, white 90%);
+}
+
+#note-text {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    line-height: 1.4;
+}
+
+.close-note {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+/* 
+    5. Mini Game Section
+*/
+#mini-game {
+    background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+    z-index: 2;
+}
+
+.game-content {
+    background: rgba(255,255,255,0.9);
+    padding: 4rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.game-question {
+    font-size: 3rem;
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    min-height: 60px; /* space for moving button */
+}
+
+#btn-yes {
+    z-index: 10;
+}
+
+#btn-no {
+    position: relative; /* Switch to absolute in JS when hovered */
+    z-index: 10;
+    transition: left 0.3s ease, top 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#game-success {
+    margin-top: 2rem;
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    animation: bounceIn 1s ease;
+}
+
+/* 
+    6. Final Surprise Section
+*/
+#final-surprise {
+    background-color: #1a1a2e; /* Dark elegant background */
+    color: white;
+}
+
+.final-content {
+    z-index: 5;
+    background: rgba(0,0,0,0.3);
+    padding: 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.glowing-text {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff6b81, 0 0 20px #ff6b81, 0 0 30px #ff6b81;
+    margin-bottom: 1.5rem;
+    animation: glowText 2s infinite alternate;
+}
+
+.final-message {
+    font-size: 1.5rem;
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.glowing-heart-large {
+    font-size: 5rem;
+    animation: pulseGlow 1.5s infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px #ffb6c1, 0 0 20px #ffb6c1, 0 0 30px #ff6b81; }
+    to { text-shadow: 0 0 20px #ffb6c1, 0 0 30px #ff6b81, 0 0 40px #ff6b81; }
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 10px #ff6b81); }
+    50% { transform: scale(1.2); filter: drop-shadow(0 0 25px #ff6b81); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 10px #ff6b81); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.floating-heart {
+    position: absolute;
+    color: var(--primary-color);
+    font-size: 20px;
+    opacity: 0.6;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Particle effect via small divs */
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-20px) scale(1.5); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3.5rem; }
+    .section-title { font-size: 2.5rem; }
+    .love-letter p { font-size: 1.5rem; }
+    .glowing-text { font-size: 3rem; }
+    .game-question { font-size: 2rem; }
+    .love-letter { padding: 2rem; }
+    .game-content { padding: 2rem; }
+}
